@@ -1,6 +1,6 @@
-package teoriadosgrafos;
+package com.TeoriaDosGrafos;
 
-public class TeoriaDosGrafos {
+public class Main {
 
     public static void main(String[] args) {
         Graph grafo = new Graph();
@@ -14,9 +14,9 @@ public class TeoriaDosGrafos {
         grafo.addEdge(2, 3);
         grafo.addEdge(2, 4);
         grafo.addEdge(3, 4);
-        //grafo.addEdge(2, 4);   
+        //grafo.addEdge(2, 4);
         System.out.println(grafo);
-        
+
         System.out.println("Regular: " + grafo.isRegular());
         System.out.println("E: " + grafo.E());
         System.out.println("Simple: " + grafo.isSimple());

@@ -1,4 +1,4 @@
-package teoriadosgrafos;
+package com.TeoriaDosGrafos;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -59,3 +59,4 @@ public class Vertex {
         return saoAdjacentes;
     }
 }
+

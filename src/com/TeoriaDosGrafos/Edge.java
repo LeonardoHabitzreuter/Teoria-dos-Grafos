@@ -1,7 +1,6 @@
-package teoriadosgrafos;
+package com.TeoriaDosGrafos;
 
 public class Edge {
-
     public Edge(Vertex primeiraVertice, Vertex segundaVertice) {
         PrimeiraVertice = primeiraVertice;
         SegundaVertice = segundaVertice;

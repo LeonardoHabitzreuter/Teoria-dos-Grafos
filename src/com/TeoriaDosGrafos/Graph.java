@@ -1,4 +1,4 @@
-package teoriadosgrafos;
+package com.TeoriaDosGrafos;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -63,7 +63,7 @@ public class Graph {
 
         return true;
     }
-    
+
     public boolean removeEdge(int idVertice1, int idVertice2) {
         Vertex vertice1 = _hashVertices.get(idVertice1);
         Vertex vertice2 = _hashVertices.get(idVertice2);
@@ -92,12 +92,12 @@ public class Graph {
         ArrayList<Edge> ligacoes = obterLigacoes();
 
         LinkedList<Edge> arestrasLinkadas = new LinkedList<>();
-        ligacoes.stream().filter((ligacao) -> (!arestrasLinkadas.stream().anyMatch((arestra) -> 
+        ligacoes.stream().filter((ligacao) -> (!arestrasLinkadas.stream().anyMatch((arestra) ->
                 (arestra.PrimeiraVertice == ligacao.PrimeiraVertice || arestra.PrimeiraVertice == ligacao.SegundaVertice) &&
                         (arestra.SegundaVertice == ligacao.PrimeiraVertice || arestra.SegundaVertice == ligacao.SegundaVertice)))).forEachOrdered((ligacao) -> {
-                            arestrasLinkadas.add(ligacao);
+            arestrasLinkadas.add(ligacao);
         });
-        
+
         return arestrasLinkadas;
     }
 
@@ -121,42 +121,42 @@ public class Graph {
         }).map((descricaoVertice) -> System.getProperty("line.separator") + descricaoVertice).reduce(descricaoGrafo, String::concat);
         return descricaoGrafo;
     }
-    
+
     public int V(){
         return _hashVertices.size();
     }
-    
+
     public int E(){
         return getEdges().size();
     }
-    
+
     public int[] degreeSequence(){
         return getVertexes().stream().map((vertice) -> vertice.degree()).sorted().mapToInt(x -> x).toArray();
     }
-    
+
     public boolean isSimple(){
         ArrayList<Edge> ligacoes = obterLigacoes();
-        
+
         if (ligacoes.stream().anyMatch((ligacao) -> ligacao.EhLaco())) {
             return false;
         }
-        
+
         for (Edge ligacao : ligacoes) {
-            if (ligacoes.stream().anyMatch((arestra) -> 
-                (arestra.PrimeiraVertice.Rotulo + arestra.SegundaVertice.Rotulo) == (ligacao.PrimeiraVertice.Rotulo + ligacao.SegundaVertice.Rotulo))){
+            if (ligacoes.stream().anyMatch((arestra) ->
+                    (arestra.PrimeiraVertice.Rotulo + arestra.SegundaVertice.Rotulo) == (ligacao.PrimeiraVertice.Rotulo + ligacao.SegundaVertice.Rotulo))){
                 return false;
             }
         }
-        
+
         return true;
     }
-    
+
     public boolean isRegular() {
         int grauPrimeiroElemento = getVertexes().stream().findFirst().get().degree();
-        
+
         return getVertexes().stream().allMatch((vertice) -> vertice.degree() == grauPrimeiroElemento);
     }
-    
+
     public boolean isComplete(){
         return true;
     }
@@ -172,16 +172,17 @@ public class Graph {
         }
         return todosOsVerticesInformadosExistem;
     }
-    
+
     private ArrayList<Edge> obterLigacoes(){
         ArrayList<Edge> ligacoes = new ArrayList<>();
         getVertexes()
-            .stream()
-            .map((indice) -> indice.Arestras)
-            .forEach((arestras) -> {
-                    ligacoes.addAll(arestras);
-                }
-            );
+                .stream()
+                .map((indice) -> indice.Arestras)
+                .forEach((arestras) -> {
+                            ligacoes.addAll(arestras);
+                        }
+                );
         return ligacoes;
     }
 }
+
