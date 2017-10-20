@@ -1,4 +1,4 @@
-package com.TeoriaDosGrafos;
+package teoriagrafos;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -185,4 +185,3 @@ public class Graph {
         return ligacoes;
     }
 }
-

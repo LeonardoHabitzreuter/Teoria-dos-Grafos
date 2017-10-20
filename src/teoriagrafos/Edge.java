@@ -1,4 +1,4 @@
-package com.TeoriaDosGrafos;
+package teoriagrafos;
 
 public class Edge {
     public Edge(Vertex primeiraVertice, Vertex segundaVertice) {
