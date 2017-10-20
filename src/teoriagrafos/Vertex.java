@@ -14,6 +14,9 @@ public class Vertex {
 
     public int Rotulo;
     public List<Edge> Arestras;
+    public Vertex VerticePai;
+    public int DistanciaAteVerticePai;
+    public Cor Cor;
 
     public void AdicionarArestra(Edge arestra) {
         Arestras.add(arestra);
@@ -57,5 +60,11 @@ public class Vertex {
         }
 
         return saoAdjacentes;
+    }
+    
+    public enum Cor{
+        Branco,
+        Cinza,
+        Preto
     }
 }

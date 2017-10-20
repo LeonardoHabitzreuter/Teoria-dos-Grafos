@@ -1,5 +1,9 @@
 package teoriagrafos;
 
+import java.util.ArrayList;
+import java.util.List;
+import teoriagrafos.Vertex.Cor;
+
 public class TeoriaGrafos {
 
     public static void main(String[] args) {
@@ -20,6 +24,26 @@ public class TeoriaGrafos {
         System.out.println("Regular: " + grafo.isRegular());
         System.out.println("Simple: " + grafo.isSimple());
         System.out.println("Completo: " + grafo.isComplete());
+        
+        Vertex verticeInicial = grafo.obterVertice(1);
     }
     
+    public List<Vertex> obterFilaAPartirDeUmVerticeInicial(Vertex verticeInicial){
+        verticeInicial.Cor = Cor.Cinza;
+        List<Vertex> fila = new ArrayList<>();
+        fila.add(verticeInicial);
+        return fila;
+    }
+    
+    public void realizarBusca(List<Vertex> fila){
+        while(!fila.isEmpty()){
+            Vertex u = fila.get(0);
+            fila.remove(u);
+            for (Vertex verticeAdjacente : u.ObterAdjacencias()) {
+                if (verticeAdjacente.Cor == Cor.Branco) {
+                    fila.add(verticeAdjacente);
+                }
+            }
+        }
+    }
 }

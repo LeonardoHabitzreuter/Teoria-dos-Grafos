@@ -13,7 +13,11 @@ public class Graph {
     public Graph() {
         this._hashVertices = new HashMap<>();
     }
-
+    
+    public Vertex obterVertice(int idVertice){
+        return _hashVertices.get(idVertice);
+    }
+    
     public boolean addVertex(int id) {
         if (VerticesExistemNoGrafo(id)) {
             return false;
@@ -25,7 +29,7 @@ public class Graph {
     }
 
     public boolean removeVertex(int idVertice) {
-        Vertex vertice = _hashVertices.get(idVertice);
+        Vertex vertice = obterVertice(idVertice);
 
         if (!VerticesExistemNoGrafo(idVertice)) {
             return false;
@@ -47,8 +51,8 @@ public class Graph {
     }
 
     public boolean addEdge(int idVertice1, int idVertice2) {
-        Vertex vertice1 = _hashVertices.get(idVertice1);
-        Vertex vertice2 = _hashVertices.get(idVertice2);
+        Vertex vertice1 = obterVertice(idVertice1);
+        Vertex vertice2 = obterVertice(idVertice2);
 
         if (!VerticesExistemNoGrafo(idVertice1, idVertice2)) {
             return false;
@@ -65,8 +69,8 @@ public class Graph {
     }
 
     public boolean removeEdge(int idVertice1, int idVertice2) {
-        Vertex vertice1 = _hashVertices.get(idVertice1);
-        Vertex vertice2 = _hashVertices.get(idVertice2);
+        Vertex vertice1 = obterVertice(idVertice1);
+        Vertex vertice2 = obterVertice(idVertice2);
 
         List<Edge> arestrasVertice1 = vertice1.Arestras;
 
@@ -80,7 +84,7 @@ public class Graph {
     }
 
     public boolean adjacent(int idVertice1, int idVertice2) {
-        Vertex vertice1 = _hashVertices.get(idVertice1);
+        Vertex vertice1 = obterVertice(idVertice1);
         return vertice1.isAdjacent(idVertice2);
     }
 
